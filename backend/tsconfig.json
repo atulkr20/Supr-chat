@@ -9,7 +9,8 @@
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
     "target": "es2020",
-    "types": [],
+    "types": ["node"],
+    "esModuleInterop": true,
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -23,6 +24,7 @@
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
+    "strictNullChecks": true,
 
     // Style Options
     // "noImplicitReturns": true,
@@ -35,10 +37,13 @@
     // Recommended Options
     "strict": false,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-  }
+  },
+  "exclude": [
+    "prisma.config.ts"
+  ]
 }
