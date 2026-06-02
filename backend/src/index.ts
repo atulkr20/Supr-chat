@@ -1,9 +1,7 @@
+import "dotenv/config";
 import express from 'express';
 import cors from  'cors';
-import dotenv from  'dotenv';
 import chatRoutes from "./routes/chat.routes";
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +14,16 @@ app.use('/health', (req, res) => {
     res.json({ status: "ok" });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);
-})
+});
+
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+export default server;

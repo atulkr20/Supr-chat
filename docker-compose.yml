@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: spur-chat-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: atul
+      POSTGRES_PASSWORD: atul123
+      POSTGRES_DB: spurdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - spur_chat_pgdata:/var/lib/postgresql/data
+
+volumes:
+  spur_chat_pgdata:
