@@ -25,7 +25,7 @@ export async function handleMessage(sessionId: string | undefined, text: string)
     // Format history for groq
 
     const history = pastMessages.map((m) => ({
-        role: m.sender === 'user' ? 'user' as const: 'assistantd' as const,
+        role: m.sender === 'user' ? 'user' as const : 'assistant' as const,
         content: m.text,
     }));
 

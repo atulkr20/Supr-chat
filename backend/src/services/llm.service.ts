@@ -1,6 +1,12 @@
-const Groq: any = require("groq-sdk");
-
-const groq: any = new Groq({ apiKey: process.env.GROQ_API_KEY });
+let groq: any;
+try {
+    if (process.env.GROQ_API_KEY) {
+        const Groq: any = require("groq-sdk");
+        groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+    }
+} catch (e) {
+    groq = undefined;
+}
 
 export const SYSTEM_PROMPT = `You are a helpful customer support agent for StyleStore, a small e-commerce store.
 
@@ -22,9 +28,9 @@ export async function generateReply(history: Message[], userMessage: string): Pr
         { role: "user", content: userMessage },
     ];
 
-    // `groq` SDK typings may vary; call via `any` to avoid compile-time SDK type errors.
-    const client: any = groq as any;
+    if (!groq) return "AI not configured (missing GROQ_API_KEY).";
 
+    const client: any = groq as any;
     const response = await client.chat?.completions?.create?.({
         model: "llama3-8b-8192",
         messages,
