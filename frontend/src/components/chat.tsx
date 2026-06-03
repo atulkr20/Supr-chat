@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 type Message = {
   sender: "user" | "ai";
   text: string;
@@ -113,7 +115,7 @@ export default function Chat() {
 
   useEffect(() => {
     if (sessionId) {
-      axios.get(`http://localhost:3000/chat/${sessionId}`)
+      axios.get(`${API_BASE_URL}/chat/${sessionId}`)
         .then((res) => {
           setMessages(res.data.messages);
         })
@@ -139,7 +141,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3000/chat/message", {
+      const res = await axios.post(`${API_BASE_URL}/chat/message`, {
         message: userMessage,
         sessionId,
       });
