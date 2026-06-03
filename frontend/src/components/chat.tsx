@@ -23,6 +23,13 @@ const TrashIcon = () => (
   </svg>
 );
 
+const HangerIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2a3 3 0 0 0-3 3h2a1 1 0 0 1 2 0 3 3 0 0 0 3-3z" />
+    <path d="M2 17.5C2 15.5 3.5 14 5.5 14h13c2 0 3.5 1.5 3.5 3.5a2.5 2.5 0 0 1-4 2l-6-4.5-6 4.5a2.5 2.5 0 0 1-4-2z" />
+  </svg>
+);
+
 // Client-Side Markdown Parser for formatting policies and lists
 function parseMarkdown(text: string): React.ReactNode {
   const lines = text.split("\n");
@@ -183,7 +190,7 @@ export default function Chat() {
         {/* Header Block */}
         <header className="chat-header">
           <div className="header-info">
-            <div className="brand-logo">S</div>
+            <div className="brand-logo"><HangerIcon size={20} /></div>
             <div>
               <h2 className="brand-name">StyleStore Support</h2>
               <div className="brand-status">
@@ -227,7 +234,7 @@ export default function Chat() {
                 style={{ justifyContent: msg.sender === "user" ? "flex-end" : "flex-start" }}
               >
                 {msg.sender === "ai" && (
-                  <div className="message-avatar">AI</div>
+                  <div className="message-avatar"><HangerIcon size={14} /></div>
                 )}
                 <div className="bubble-container" style={{ alignItems: msg.sender === "user" ? "flex-end" : "flex-start" }}>
                   <span className="sender-label">{msg.sender === "user" ? "You" : "Support"}</span>
@@ -241,7 +248,7 @@ export default function Chat() {
 
           {loading && (
             <div className="message-wrapper" style={{ justifyContent: "flex-start" }}>
-              <div className="message-avatar">AI</div>
+              <div className="message-avatar"><HangerIcon size={14} /></div>
               <div className="bubble-container" style={{ alignItems: "flex-start" }}>
                 <span className="sender-label">Support</span>
                 <div className="message-bubble ai-bubble">
