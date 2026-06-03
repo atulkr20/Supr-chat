@@ -2,7 +2,7 @@
 
 A mini AI-powered live chat widget for a fictional e-commerce store. Built as part of the Spur engineering take-home assignment.
 
-**Live demo:** [your-deployed-url-here]
+**Live demo:** [https://supr-chat.vercel.app/](https://supr-chat.vercel.app/)
 
 ---
 
@@ -26,8 +26,8 @@ A mini AI-powered live chat widget for a fictional e-commerce store. Built as pa
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/spur-chat
-cd spur-chat
+git clone https://github.com/atulkr20/Supr-chat.git
+cd Supr-chat
 ```
 
 ### 2. Start Postgres with Docker
